@@ -1,10 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conducteur de Confiance — ESPRIT Covoiturage</title>
+
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN + CONFIGURATION EXACTEMENT IDENTIQUE À TA PAGE "GÉRER MES DEMANDES" -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            roboto: ['Roboto', 'sans-serif']
+          },
+          colors: {
+            'teal-primary': '#4CA7A9',
+            'teal-dark': '#3F8C8D',
+            'teal-darker': '#0F2F2F',
+            'bg-light': '#E7F1F1',
+            'gray-text': '#5A7070'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background-color: #E7F1F1; }
+  </style>
 </head>
-<body>
-$END$
+
+<body class="bg-bg-light font-outfit min-h-screen flex flex-col">
+
+<!-- ARRIÈRE-PLAN IDENTIQUE À "GÉRER MES DEMANDES" -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+  <div class="absolute w-[1400px] h-[750px] bg-teal-dark opacity-30 rounded-full blur-3xl -top-40 -left-80"></div>
+  <div class="absolute w-96 h-96 bg-teal-primary opacity-20 rounded-full blur-3xl top-60 -right-32 hidden lg:block"></div>
+</div>
+
+<!-- HEADER IDENTIQUE -->
+<header class="relative z-50 w-full bg-white shadow-sm sticky top-0">
+  <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="w-14 h-14">
+        <img src="style/assets/logo.jpg" alt="Logo" class="w-full h-full object-cover rounded-lg">
+      </div>
+      <div class="text-black text-2xl font-bold font-outfit">ESPRITCovoiturage</div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-10">
+      <a href="#" class="text-gray-text text-base font-medium hover:text-teal-primary transition">Proposer un trajet</a>
+      <a href="#" class="text-gray-text text-base font-medium hover:text-teal-primary transition">Les Propositions</a>
+      <a href="#" class="text-gray-text text-base font-medium hover:text-teal-primary transition">Mes Demandes</a>
+    </nav>
+
+    <div class="hidden lg:flex items-center gap-6">
+      <div class="flex items-center gap-3 px-5 py-2.5 border border-gray-300 rounded-full">
+        <div class="w-10 h-10 bg-teal-primary rounded-full flex items-center justify-center text-white font-bold text-lg">M</div>
+        <div>
+          <div class="font-semibold text-sm">Maram Boussalem</div>
+          <div class="text-xs text-gray-text">Passager</div>
+        </div>
+      </div>
+      <button class="bg-teal-primary hover:bg-teal-dark text-white font-semibold px-8 py-3 rounded-full transition">
+        Déconnexion
+      </button>
+    </div>
+
+    <button id="menu-btn" class="md:hidden p-2">
+      <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="px-6 py-6 space-y-6">
+      <a href="#" class="block text-lg font-medium text-gray-700 hover:text-teal-primary">Proposer un trajet</a>
+      <a href="#" class="block text-lg font-medium text-gray-700 hover:text-teal-primary">Les Propositions</a>
+      <a href="#" class="block text-lg font-medium text-gray-700 hover:text-teal-primary">Mes Demandes</a>
+      <div class="pt-6 border-t border-gray-200">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-14 h-14 bg-teal-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">M</div>
+          <div>
+            <div class="font-bold text-lg">Maram Boussalem</div>
+            <div class="text-sm text-gray-text">Passager</div>
+          </div>
+        </div>
+        <button class="w-full bg-teal-primary hover:bg-teal-dark text-white py-3 rounded-full font-semibold transition">
+          Déconnexion
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IDENTIQUE À "GÉRER MES DEMANDES" (même couleur #E8F4F4) -->
+<section class="bg-[#E8F4F4] py-20">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-teal-darker mb-6">
+      Conducteur de Confiance
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-600 font-light">
+      Découvrez les conducteurs les plus fiables de la communauté ESPRIT
+    </p>
+  </div>
+</section>
+
+<!-- CONTENU PRINCIPAL -->
+<main class="flex-1 py-16 px-6 relative z-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+      <!-- COLONNE GAUCHE -->
+      <div class="lg:col-span-4 space-y-8">
+
+        <!-- Statistiques -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 border-2 border-teal-dark/20">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-12 h-12 bg-teal-primary/10 rounded-2xl flex items-center justify-center">
+              <svg class="w-7 h-7 text-teal-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-teal-darker">Statistiques</h3>
+          </div>
+          <div class="space-y-6 text-lg">
+            <div class="flex justify-between"><span class="text-gray-text">Trajets</span><span class="font-bold text-teal-primary">234</span></div>
+            <div class="flex justify-between"><span class="text-gray-text">Économisé</span><span class="font-bold text-teal-primary">890 DT</span></div>
+            <div class="flex justify-between"><span class="text-gray-text">CO₂ évité</span><span class="font-bold text-teal-primary">167 Kg</span></div>
+          </div>
+        </div>
+
+        <!-- Sécurité -->
+        <div class="bg-teal-primary/10 rounded-3xl shadow-xl p-8 border-2 border-teal-primary/30">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 bg-teal-primary/20 rounded-2xl flex items-center justify-center">
+              <svg class="w-7 h-7 text-teal-primary" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2h3a1 1 0 011 1v9a1 1 0 01-1 1H2a1 1 0 01-1-1v-9a1 1 0 011-1h3zm6-6a3 3 0 00-3 3v1h6V7a3 3 0 00-3-3z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-teal-darker">Sécurité Garantie</h3>
+          </div>
+          <p class="text-gray-text text-lg leading-relaxed">
+            Tous les conducteurs sont vérifiés et notés par la communauté
+          </p>
+        </div>
+      </div>
+
+      <!-- COLONNE DROITE - PROFIL -->
+      <div class="lg:col-span-8">
+        <div class="bg-white rounded-3xl shadow-2xl p-10 border-2 border-teal-dark/20">
+          <div class="flex flex-col items-center mb-10">
+            <div class="w-36 h-36 bg-teal-primary rounded-full mb-6 shadow-xl flex items-center justify-center">
+              <span class="text-white text-6xl font-bold">F</span>
+            </div>
+            <h2 class="text-4xl font-black text-teal-darker">Foulen Elfouleni</h2>
+          </div>
+
+          <!-- Score de confiance -->
+          <div class="bg-teal-primary/10 rounded-3xl p-10 text-center mb-12">
+            <p class="text-teal-darker font-medium text-lg mb-3">Score de confiance</p>
+            <p class="text-7xl font-black text-teal-primary mb-2">985</p>
+            <p class="text-gray-text text-lg mb-6">sur 1000</p>
+            <div class="w-full bg-gray-300 rounded-full h-5 overflow-hidden shadow-inner">
+              <div class="bg-teal-primary h-5 rounded-full" style="width: 98.5%"></div>
+            </div>
+            <p class="text-teal-primary font-bold text-2xl mt-6">Top 2% des conducteurs</p>
+          </div>
+
+          <!-- Mini-stats -->
+          <div class="grid grid-cols-3 gap-6 text-center mb-12">
+            <div class="bg-teal-primary/10 rounded-3xl py-8">
+              <div class="text-5xl mb-2">5 stars</div>
+              <p class="text-gray-text text-lg">4.98 / 5</p>
+              <p class="text-sm text-gray-text">Note moyenne</p>
+            </div>
+            <div class="bg-teal-primary/10 rounded-3xl py-8">
+              <div class="text-5xl font-bold text-teal-primary mb-2">234</div>
+              <p class="text-gray-text text-lg">Trajets</p>
+            </div>
+            <div class="bg-teal-primary/10 rounded-3xl py-8">
+              <div class="text-5xl font-bold text-teal-primary mb-2">3</div>
+              <p class="text-gray-text text-lg">Ans membre</p>
+            </div>
+          </div>
+
+          <button class="w-full bg-teal-primary hover:bg-teal-dark text-white font-bold text-2xl py-6 rounded-full shadow-xl transition transform hover:scale-105">
+            Ajouter comme Pair Favori
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER IDENTIQUE -->
+<footer class="w-full bg-white mt-20 relative z-20">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+      <div>
+        <div class="text-black text-3xl font-bold font-outfit mb-4">ESPRITCovoiturage</div>
+        <p class="text-gray-text text-base leading-6 mb-6">
+          La plateforme de covoiturage dédiée exclusivement aux étudiants et au personnel d'ESPRIT.<br>Partagez, économisez, connectez-vous.
+        </p>
+        <img src="style/assets/esprit.png" alt="ESPRIT" class="h-20">
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">Navigation</h3>
+        <ul class="space-y-2 text-gray-text">
+          <li><a href="#" class="hover:text-teal-primary transition">Accueil</a></li>
+          <li><a href="#" class="hover:text-teal-primary transition">Options</a></li>
+          <li><a href="#" class="hover:text-teal-primary transition">Témoignages</a></li>
+          <li><a href="#" class="hover:text-teal-primary transition">CovoltBot</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">Contact</h3>
+        <ul class="space-y-2 text-gray-text">
+          <li><a href="#" class="hover:text-teal-primary transition">Email</a></li>
+          <li><a href="#" class="hover:text-teal-primary transition">LinkedIn</a></li>
+          <li><a href="#" class="hover:text-teal-primary transition">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="w-full h-0.5 bg-gradient-to-br from-emerald-400/75 to-slate-500"></div>
+    <p class="text-center text-gray-text text-sm my-4">
+      © 2025 ESPRIT Covoiturage. Tous droits réservés. | Conçu pour la communauté ESPRIT
+    </p>
+    <div class="w-full h-2.5 bg-gradient-to-br from-emerald-400/75 to-slate-500"></div>
+  </div>
+</footer>
+
+<!-- Menu hamburger -->
+<script>
+  document.getElementById('menu-btn')?.addEventListener('click', function () {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+    const svg = this.querySelector('svg');
+    svg.innerHTML = svg.innerHTML.includes('M4 6h16')
+            ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>`
+            : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>`;
+  });
+</script>
 </body>
 </html>
