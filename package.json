@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tailwindcss -i ./style/input.css -o ./style/style.css --watch",
-    "build": "tailwindcss -i ./style/input.css -o ./style/style.css --minify"
+    "dev": "npx tailwindcss -i ./style/input.css -o ./style/style.css --watch",
+    "build": "npx tailwindcss -i ./style/input.css -o ./style/style.css --minify"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,6 @@
   },
   "homepage": "https://github.com/maramboussalem/Integration-web#readme",
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.17",
-    "@tailwindcss/vite": "^4.1.17",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {},
